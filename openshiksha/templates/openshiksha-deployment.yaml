@@ -1,0 +1,99 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "openshiksha.fullname" . }}
+  labels:
+    {{- include "openshiksha.labels" . | nindent 4 }}
+spec:
+{{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+{{- end }}
+  selector:
+    matchLabels:
+      {{- include "openshiksha.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+    {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      labels:
+        {{- include "openshiksha.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "openshiksha.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          env:
+            - name: OPENSHIKSHA_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: openshiksha-secret
+                  key: secret-key
+            - name: OPENSHIKSHA_EMAIL_HOST_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: openshiksha-secret
+                  key: email-host-password
+            - name: OPENSHIKSHA_SUPERUSER_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: openshiksha-secret
+                  key: superuser-password
+            - name: OPENSHIKSHA_SCHOOL_ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: openshiksha-secret
+                  key: school-admin-password
+            - name: OPENSHIKSHA_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-credentials
+                  key: mysql-password
+            - name: OPENSHIKSHA_DB_HOST
+              value: {{ .Release.Name }}-mysql
+            - name: OPENSHIKSHA_DB_PORT
+              value: "3306"
+            - name: OPENSHIKSHA_CABINET_HOST
+              value: {{ .Release.Name }}-openshiksha-cabinet
+            - name: OPENSHIKSHA_CABINET_PORT
+              value: "80"
+            - name: OPENSHIKSHA_SALES_PHONE
+              value: {{ .Values.env.salesPhone | quote }}
+            - name: OPENSHIKSHA_CONTACT_PHONE
+              value: {{ .Values.env.contactPhone | quote }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.targetPort }}
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
