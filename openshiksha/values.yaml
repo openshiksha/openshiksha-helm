@@ -6,11 +6,8 @@ replicaCount: 3
 
 image:
   repository: docker.pkg.github.com/openshiksha/openshiksha/openshiksha
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: "v0.1.6"
+  pullPolicy: Always
   cabinetRepository: docker.pkg.github.com/openshiksha/openshiksha-cabinet/openshiksha-cabinet
-  cabinetTag: "v0.1.2"
 
 imagePullSecrets:
   - name: regcred
