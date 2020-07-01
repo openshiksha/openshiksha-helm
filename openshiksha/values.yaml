@@ -80,8 +80,8 @@ tolerations: []
 affinity: {}
 
 env:
-  contactPhone: 9762960587
-  salesPhone: 9762960587
+  contactPhone: "9762960587"
+  salesPhone: "9762960587"
 
 # subchart configurations
 mysql:
