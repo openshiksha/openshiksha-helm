@@ -43,6 +43,8 @@ service:
 
 ingress:
   enabled: true
+  # enables ingress to serve www. subdomain routes
+  legacyHostEnabled: true
   annotations:
     kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
