@@ -12,18 +12,25 @@ metadata:
   name: {{ $fullName }}
   labels:
     {{- include "openshiksha.labels" . | nindent 4 }}
-  {{- with .Values.ingress.annotations }}
   annotations:
+  {{- with .Values.ingress.annotations }}
     {{- toYaml . | nindent 4 }}
+  {{- end }}
+  {{ if .Values.ingress.tls }}
+    cert-manager.io/issuer: {{ .Values.ingress.issuerName }}
+  {{- end }}
+  {{ if .Values.ingress.legacyHostEnabled }}
+    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
   {{- end }}
 spec:
   {{- if .Values.ingress.tls }}
   tls:
-    {{- range .Values.ingress.tls }}
     - hosts:
         - {{ .Values.host | quote }}
-      secretName: {{ .secretName }}
-    {{- end }}
+      {{ if .Values.ingress.legacyHostEnabled }}
+        - {{ $legacyHost }}
+      {{- end }}
+      secretName: {{ .Values.ingress.secretName }}
   {{- end }}
   rules:
     - host: {{ .Values.host | quote }}
@@ -35,15 +42,4 @@ spec:
               serviceName: {{ $fullName }}
               servicePort: {{ $svcPort }}
           {{- end }}
-    {{- if .Values.ingress.legacyHostEnabled }}
-    - host: {{ $legacyHost | quote }}
-      http:
-        paths:
-          {{- range .Values.ingress.paths }}
-          - path: {{ . }}
-            backend:
-              serviceName: {{ $fullName }}
-              servicePort: {{ $svcPort }}
-          {{- end }}
-    {{- end }}
 {{- end }}

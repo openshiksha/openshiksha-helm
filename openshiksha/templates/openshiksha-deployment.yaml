@@ -5,9 +5,7 @@ metadata:
   labels:
     {{- include "openshiksha.labels" . | nindent 4 }}
 spec:
-{{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
-{{- end }}
   selector:
     matchLabels:
       {{- include "openshiksha.selectorLabels" . | nindent 6 }}
@@ -64,6 +62,8 @@ spec:
               value: "3306"
             - name: OPENSHIKSHA_CABINET_HOST
               value: {{ .Release.Name }}-openshiksha-cabinet
+            - name: OPENSHIKSHA_ENV
+              value: {{ .Values.tag | upper | quote }}
             - name: OPENSHIKSHA_CABINET_PORT
               value: "80"
             - name: OPENSHIKSHA_SALES_PHONE
