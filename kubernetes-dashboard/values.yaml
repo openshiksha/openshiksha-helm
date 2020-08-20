@@ -1,0 +1,12 @@
+# Default values for kubernetes-dashboard.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# subchart configurations
+kubernetes-dashboard:
+  ingress:
+    enabled: true
+  protocolHttp: true
+  serviceAccount:
+    name: admin-user
+  
