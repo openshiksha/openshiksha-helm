@@ -29,3 +29,6 @@ dependencies:
     -   name: nginx-ingress-controller
         repository: https://charts.bitnami.com/bitnami
         version: ~5.3.24
+    -   name: redis
+        repository: https://charts.bitnami.com/bitnami
+        version: ~10.7.16

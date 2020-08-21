@@ -5,5 +5,8 @@ dependencies:
 - name: nginx-ingress-controller
   repository: https://charts.bitnami.com/bitnami
   version: ~5.3.24
-digest: sha256:add2026b698f58c48068551299fd6836e8b02bd0ace583ad512da8d864679b0a
-generated: "2020-07-05T23:43:22.914107802-04:00"
+- name: redis
+  repository: https://charts.bitnami.com/bitnami
+  version: ~10.7.16
+digest: sha256:d49da059f5bf21a081fa4ca39bcf366dd6967be1e8c2c619ab8aa47e407a6268
+generated: "2020-08-20T19:01:11.677864539-04:00"

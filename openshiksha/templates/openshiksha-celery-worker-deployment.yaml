@@ -1,14 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "openshiksha.fullname" . }}
+  name: {{ include "openshiksha-celery-worker.fullname" . }}
   labels:
-    {{- include "openshiksha.labels" . | nindent 4 }}
+    {{- include "openshiksha-celery-worker.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.celeryWorkerCount }}
   selector:
     matchLabels:
-      {{- include "openshiksha.selectorLabels" . | nindent 6 }}
+      {{- include "openshiksha-celery-worker.selectorLabels" . | nindent 6 }}
   template:
     metadata:
     {{- with .Values.podAnnotations }}
@@ -16,7 +16,7 @@ spec:
         {{- toYaml . | nindent 8 }}
     {{- end }}
       labels:
-        {{- include "openshiksha.selectorLabels" . | nindent 8 }}
+        {{- include "openshiksha-celery-worker.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -26,10 +26,17 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
-        - name: {{ include "openshiksha.name" . }}
+        - name: {{ include "openshiksha-celery-worker.name" . }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.tag }}"
+          command: ["/usr/local/bin/celery"]
+          args:
+            - "-A"
+            - "openshiksha"
+            - "worker"
+            - "-l"
+            - "info"
           env:
             - name: OPENSHIKSHA_SECRET_KEY
               valueFrom:
@@ -80,18 +87,24 @@ spec:
             - name: OPENSHIKSHA_CONTACT_PHONE
               value: {{ .Values.env.contactPhone | quote }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          ports:
-            - name: http
-              containerPort: {{ .Values.service.targetPort }}
-              protocol: TCP
           livenessProbe:
-            httpGet:
-              path: /
-              port: http
+            exec:
+              command:
+                - bash
+                - "-c"
+                - "celery inspect ping -A openshiksha -d celery@$HOSTNAME"
+            initialDelaySeconds: 30
+            periodSeconds: 60
+            timeoutSeconds: 10
           readinessProbe:
-            httpGet:
-              path: /
-              port: http
+            exec:
+              command:
+                - bash
+                - "-c"
+                - "celery inspect ping -A openshiksha -d celery@$HOSTNAME"
+            initialDelaySeconds: 30
+            periodSeconds: 60
+            timeoutSeconds: 10
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
