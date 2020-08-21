@@ -83,7 +83,7 @@ env:
 # subchart configurations
 mysql:
   slave:
-    replicas: 1
+    replicas: 0
   root:
     forcePassword: true
   db:
@@ -96,6 +96,6 @@ mysql:
 
 redis:
   cluster:
-    slaveCount: 1
+    slaveCount: 0
   existingSecret: redis-credentials
   existingSecretPasswordKey: redis-password
