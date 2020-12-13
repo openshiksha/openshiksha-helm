@@ -15,6 +15,6 @@ helm test <release-name>
 ## Updating Dependencies
 
 ```
-cd <chart-name>
+cd charts/<chart-name>
 helm dependency update
 ```

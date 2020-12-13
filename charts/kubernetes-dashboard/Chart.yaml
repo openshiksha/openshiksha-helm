@@ -22,7 +22,12 @@ version: 0.1.0
 # follow Semantic Versioning. They should reflect the version the application is using.
 appVersion: 0.1.0
 
+maintainers:
+  - name: OpenShiksha
+    email: contact@openshiksha.org
+    url: https://openshiksha.org
+
 dependencies:
-    -   name: kubernetes-dashboard
-        repository: https://kubernetes.github.io/dashboard
-        version: ~2.3.0
+  - name: kubernetes-dashboard
+    repository: https://kubernetes.github.io/dashboard
+    version: ~2.3.0

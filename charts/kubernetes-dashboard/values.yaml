@@ -9,4 +9,3 @@ kubernetes-dashboard:
   protocolHttp: true
   serviceAccount:
     name: admin-user
-  

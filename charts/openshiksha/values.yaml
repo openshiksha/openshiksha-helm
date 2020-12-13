@@ -44,7 +44,7 @@ ingress:
   enabled: true
   paths:
     - /
-  
+
   # TLS settings
   tls: true
   secretName: ingress-tls

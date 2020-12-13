@@ -257,8 +257,7 @@
                             "$id": "#/properties/mysql/properties/slave/properties/replicas",
                             "type": "integer"
                         }
-                    },
-                    "additionalProperties": false
+                    }
                 },
                 "root": {
                     "$id": "#/properties/mysql/properties/root",
@@ -271,8 +270,7 @@
                             "$id": "#/properties/mysql/properties/root/properties/forcePassword",
                             "type": "boolean"
                         }
-                    },
-                    "additionalProperties": false
+                    }
                 },
                 "db": {
                     "$id": "#/properties/mysql/properties/db",
@@ -297,8 +295,7 @@
                             "type": "string",
                             "minLength": 3
                         }
-                    },
-                    "additionalProperties": false
+                    }
                 },
                 "replication": {
                     "$id": "#/properties/mysql/properties/replication",
@@ -311,16 +308,14 @@
                             "$id": "#/properties/mysql/properties/replication/properties/forcePassword",
                             "type": "boolean"
                         }
-                    },
-                    "additionalProperties": false
+                    }
                 },
                 "existingSecret": {
                     "$id": "#/properties/mysql/properties/existingSecret",
                     "type": "string",
                     "minLength": 3
                 }
-            },
-            "additionalProperties": false
+            }
         },
         "redis": {
             "$id": "#/properties/redis",
@@ -342,8 +337,7 @@
                             "$id": "#/properties/redis/properties/cluster/properties/slaveCount",
                             "type": "integer"
                         }
-                    },
-                    "additionalProperties": false
+                    }
                 },
                 "existingSecret": {
                     "$id": "#/properties/redis/properties/existingSecret",
@@ -355,8 +349,11 @@
                     "type": "string",
                     "minLength": 3
                 }
-            },
-            "additionalProperties": false
+            }
+        },
+        "nginx-ingress-controller": {
+            "$id": "#/properties/nginx-ingress-controller",
+            "type": "object"
         }
     },
     "additionalProperties": false
