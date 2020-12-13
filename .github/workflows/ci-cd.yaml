@@ -35,7 +35,7 @@ jobs:
         uses: helm/chart-testing-action@v2.0.1
     
       - name: Run chart-testing (lint)
-        run: ct lint --since "HEAD~1"
+        run: ct lint --all
 
   release:
     name: Release
