@@ -77,6 +77,30 @@ entries:
   openshiksha:
   - apiVersion: v2
     appVersion: 0.1.0
+    created: "2020-12-13T11:11:01.558634028Z"
+    dependencies:
+    - name: mysql
+      repository: https://charts.bitnami.com/bitnami
+      version: ~6.14.4
+    - name: nginx-ingress-controller
+      repository: https://charts.bitnami.com/bitnami
+      version: ~5.3.24
+    - name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: ~10.7.16
+    description: A Helm chart for the OpenShiksha Application
+    digest: 61aef1b1263dfe97287b4fa0dc425be83eff44e37993f998c590e99d78519541
+    maintainers:
+    - email: contact@openshiksha.org
+      name: OpenShiksha
+      url: https://openshiksha.org
+    name: openshiksha
+    type: application
+    urls:
+    - https://github.com/openshiksha/openshiksha-helm/releases/download/openshiksha-1.0.2/openshiksha-1.0.2.tgz
+    version: 1.0.2
+  - apiVersion: v2
+    appVersion: 0.1.0
     created: "2020-12-13T10:43:18.111758852Z"
     dependencies:
     - name: mysql
