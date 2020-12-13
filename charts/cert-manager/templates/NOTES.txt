@@ -1,3 +1,0 @@
-The cert-manager is installed as a seperate chart since it must be installed into the 'cert-manager' namespace.
-
-Verify the installation by running: kubectl get pods --namespace cert-manager
