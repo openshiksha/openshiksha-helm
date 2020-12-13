@@ -3,6 +3,24 @@ entries:
   cert-manager:
   - apiVersion: v2
     appVersion: 0.1.0
+    created: "2020-12-13T11:14:04.10813755Z"
+    dependencies:
+    - name: cert-manager
+      repository: https://charts.jetstack.io
+      version: ~1.1.0
+    description: A Helm chart for Cert-Manager
+    digest: a14df3b5b23dbcc43cbd7d060cad87a7ace99c593638b5c923c23307272c3eda
+    maintainers:
+    - email: contact@openshiksha.org
+      name: OpenShiksha
+      url: https://openshiksha.org
+    name: cert-manager
+    type: application
+    urls:
+    - https://github.com/openshiksha/openshiksha-helm/releases/download/cert-manager-1.0.1/cert-manager-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
+    appVersion: 0.1.0
     created: "2020-12-13T10:43:17.855530609Z"
     dependencies:
     - name: cert-manager
@@ -38,6 +56,24 @@ entries:
     - https://github.com/openshiksha/openshiksha-helm/releases/download/cert-manager-0.1.0/cert-manager-0.1.0.tgz
     version: 0.1.0
   kubernetes-dashboard:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2020-12-13T11:14:04.219528134Z"
+    dependencies:
+    - name: kubernetes-dashboard
+      repository: https://kubernetes.github.io/dashboard
+      version: ~2.3.0
+    description: A Helm chart for Kubernetes Dashboard
+    digest: aec36989454a57fb4bd7a20de4fcf301773126a750f96ee9854c699484bccbca
+    maintainers:
+    - email: contact@openshiksha.org
+      name: OpenShiksha
+      url: https://openshiksha.org
+    name: kubernetes-dashboard
+    type: application
+    urls:
+    - https://github.com/openshiksha/openshiksha-helm/releases/download/kubernetes-dashboard-1.0.1/kubernetes-dashboard-1.0.1.tgz
+    version: 1.0.1
   - apiVersion: v2
     appVersion: 0.1.0
     created: "2020-12-13T10:43:17.972919557Z"
