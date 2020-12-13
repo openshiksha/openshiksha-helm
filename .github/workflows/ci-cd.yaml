@@ -24,12 +24,18 @@ jobs:
         name: Set up Python
         with:
           python-version: 3.7
+
+      - name: Setup Helm Repos
+        run: |
+          helm repo add jetstack https://charts.jetstack.io && \
+          helm repo add dash https://kubernetes.github.io/dashboard && \
+          helm repo add bitnami https://charts.bitnami.com/bitnami
     
       - name: Set up chart-testing
         uses: helm/chart-testing-action@v2.0.1
     
       - name: Run chart-testing (lint)
-        run: ct lint --chart-repos jetstack=https://charts.jetstack.io,dash=https://kubernetes.github.io/dashboard,bitnami=https://charts.bitnami.com/bitnami
+        run: ct lint --since "HEAD~1"
 
   release:
     name: Release
@@ -50,12 +56,6 @@ jobs:
         uses: azure/setup-helm@v1
         with:
           version: v3.4.0
-
-      - name: Setup Helm Repos
-        run: |
-          helm repo add jetstack https://charts.jetstack.io && \
-          helm repo add dash https://kubernetes.github.io/dashboard && \
-          helm repo add bitnami https://charts.bitnami.com/bitnami
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.1.0

@@ -81,7 +81,7 @@ mysql:
   root:
     forcePassword: true
   db:
-    user: openshiksha_ap
+    user: openshiksha_app
     forcePassword: true
     name: openshiksha
   replication:
