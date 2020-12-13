@@ -2,8 +2,5 @@
 {{- if .Values.ingress.enabled }}
 {{- range .Values.ingress.paths }}
 http{{ if $.Values.ingress.tls }}s{{ end }}://{{ $.Values.host }}{{ . }}
-{{- if $.Values.ingress.legacyHostEnabled }}
-http{{ if $.Values.ingress.tls }}s{{ end }}://www.{{ $.Values.host }}{{ . }}
-{{- end }}
 {{- end }}
 {{- end }}

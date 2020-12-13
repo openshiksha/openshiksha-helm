@@ -1,3 +1,0 @@
-The kubernetes-dashboard should only be installed in DEV environments into its own kubernetes-dashboard namepsace.
-
-Verify the installation by running: kubectl get pods --namespace kubernetes-dashboard

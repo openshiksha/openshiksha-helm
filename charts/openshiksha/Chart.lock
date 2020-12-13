@@ -1,12 +1,12 @@
 dependencies:
 - name: mysql
   repository: https://charts.bitnami.com/bitnami
-  version: ~6.14.4
+  version: 6.14.12
 - name: nginx-ingress-controller
   repository: https://charts.bitnami.com/bitnami
-  version: ~5.3.24
+  version: 5.3.25
 - name: redis
   repository: https://charts.bitnami.com/bitnami
-  version: ~10.7.16
-digest: sha256:d49da059f5bf21a081fa4ca39bcf366dd6967be1e8c2c619ab8aa47e407a6268
-generated: "2020-08-20T19:01:11.677864539-04:00"
+  version: 10.7.17
+digest: sha256:af9452360d58e1ea5f89c3f88cbd284f54f4469c3cb3ee8c162d94d055ee6569
+generated: "2020-12-13T03:46:22.422952724-05:00"
