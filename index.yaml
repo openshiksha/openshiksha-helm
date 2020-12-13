@@ -3,6 +3,24 @@ entries:
   cert-manager:
   - apiVersion: v2
     appVersion: 0.1.0
+    created: "2020-12-13T10:43:17.855530609Z"
+    dependencies:
+    - name: cert-manager
+      repository: https://charts.jetstack.io
+      version: ~1.1.0
+    description: A Helm chart for Cert-Manager
+    digest: 291576b17fc46bf1c5af0fb1c9445f8985e48f0f8333b34e51727bac9d0042d7
+    maintainers:
+    - email: contact@openshiksha.org
+      name: OpenShiksha
+      url: https://openshiksha.org
+    name: cert-manager
+    type: application
+    urls:
+    - https://github.com/openshiksha/openshiksha-helm/releases/download/cert-manager-1.0.0/cert-manager-1.0.0.tgz
+    version: 1.0.0
+  - apiVersion: v2
+    appVersion: 0.1.0
     created: "2020-12-13T10:40:23.627972864Z"
     dependencies:
     - name: cert-manager
@@ -22,6 +40,24 @@ entries:
   kubernetes-dashboard:
   - apiVersion: v2
     appVersion: 0.1.0
+    created: "2020-12-13T10:43:17.972919557Z"
+    dependencies:
+    - name: kubernetes-dashboard
+      repository: https://kubernetes.github.io/dashboard
+      version: ~2.3.0
+    description: A Helm chart for Kubernetes Dashboard
+    digest: a6dcbde8ac44494a2a53fac76d1c9b8ed48fbbdd4246e5a96f322677c97a6b02
+    maintainers:
+    - email: contact@openshiksha.org
+      name: OpenShiksha
+      url: https://openshiksha.org
+    name: kubernetes-dashboard
+    type: application
+    urls:
+    - https://github.com/openshiksha/openshiksha-helm/releases/download/kubernetes-dashboard-1.0.0/kubernetes-dashboard-1.0.0.tgz
+    version: 1.0.0
+  - apiVersion: v2
+    appVersion: 0.1.0
     created: "2020-12-13T10:40:23.738247686Z"
     dependencies:
     - name: kubernetes-dashboard
@@ -39,6 +75,30 @@ entries:
     - https://github.com/openshiksha/openshiksha-helm/releases/download/kubernetes-dashboard-0.1.0/kubernetes-dashboard-0.1.0.tgz
     version: 0.1.0
   openshiksha:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2020-12-13T10:43:18.111758852Z"
+    dependencies:
+    - name: mysql
+      repository: https://charts.bitnami.com/bitnami
+      version: ~6.14.4
+    - name: nginx-ingress-controller
+      repository: https://charts.bitnami.com/bitnami
+      version: ~5.3.24
+    - name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: ~10.7.16
+    description: A Helm chart for the OpenShiksha Application
+    digest: d94b8e9b939e7fcafa267c3829867121af2735f0927287cc845ffed59bbb00dd
+    maintainers:
+    - email: contact@openshiksha.org
+      name: OpenShiksha
+      url: https://openshiksha.org
+    name: openshiksha
+    type: application
+    urls:
+    - https://github.com/openshiksha/openshiksha-helm/releases/download/openshiksha-1.0.0/openshiksha-1.0.0.tgz
+    version: 1.0.0
   - apiVersion: v2
     appVersion: 0.1.0
     created: "2020-12-13T10:40:23.878644815Z"
