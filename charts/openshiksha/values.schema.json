@@ -1,0 +1,363 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "type": "object",
+    "required": [
+        "replicaCount",
+        "celeryWorkerCount",
+        "image",
+        "imagePullSecrets",
+        "serviceAccount",
+        "podAnnotations",
+        "podSecurityContext",
+        "securityContext",
+        "service",
+        "ingress",
+        "resources",
+        "nodeSelector",
+        "tolerations",
+        "affinity",
+        "env",
+        "mysql",
+        "redis",
+        "host",
+        "tag"
+    ],
+    "properties": {
+        "replicaCount": {
+            "$id": "#/properties/replicaCount",
+            "type": "integer"
+        },
+        "host": {
+            "$id": "#/properties/host",
+            "type": "string",
+            "minLength": 3
+        },
+        "tag": {
+            "$id": "#/properties/tag",
+            "type": "string",
+            "enum": ["qa", "prod"]
+        },
+        "celeryWorkerCount": {
+            "$id": "#/properties/celeryWorkerCount",
+            "type": "integer"
+        },
+        "image": {
+            "$id": "#/properties/image",
+            "type": "object",
+            "required": [
+                "repository",
+                "pullPolicy",
+                "cabinetRepository"
+            ],
+            "properties": {
+                "repository": {
+                    "$id": "#/properties/image/properties/repository",
+                    "type": "string",
+                    "minLength": 3
+                },
+                "pullPolicy": {
+                    "$id": "#/properties/image/properties/pullPolicy",
+                    "type": "string",
+                    "minLength": 3
+                },
+                "cabinetRepository": {
+                    "$id": "#/properties/image/properties/cabinetRepository",
+                    "type": "string",
+                    "minLength": 3
+                }
+            },
+            "additionalProperties": false
+        },
+        "imagePullSecrets": {
+            "$id": "#/properties/imagePullSecrets",
+            "type": "array",
+            "items": {
+                "$id": "#/properties/imagePullSecrets/items",
+                "type": "object",
+                "required": [
+                    "name"
+                ],
+                "properties": {
+                    "name": {
+                        "$id": "#/properties/imagePullSecrets/items/properties/name",
+                        "type": "string",
+                        "minLength": 3
+                    }
+                },
+                "additionalProperties": false
+            },
+            "minItems": 1
+        },
+        "serviceAccount": {
+            "$id": "#/properties/serviceAccount",
+            "type": "object",
+            "required": [
+                "create",
+                "annotations",
+                "name"
+            ],
+            "properties": {
+                "create": {
+                    "$id": "#/properties/serviceAccount/properties/create",
+                    "type": "boolean"
+                },
+                "annotations": {
+                    "$id": "#/properties/serviceAccount/properties/annotations",
+                    "type": "object"
+                },
+                "name": {
+                    "$id": "#/properties/serviceAccount/properties/name",
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false
+        },
+        "podAnnotations": {
+            "$id": "#/properties/podAnnotations",
+            "type": "object"
+        },
+        "podSecurityContext": {
+            "$id": "#/properties/podSecurityContext",
+            "type": "object"
+        },
+        "securityContext": {
+            "$id": "#/properties/securityContext",
+            "type": "object"
+        },
+        "service": {
+            "$id": "#/properties/service",
+            "type": "object",
+            "required": [
+                "type",
+                "port",
+                "targetPort"
+            ],
+            "properties": {
+                "type": {
+                    "$id": "#/properties/service/properties/type",
+                    "type": "string",
+                    "minLength": 3
+                },
+                "port": {
+                    "$id": "#/properties/service/properties/port",
+                    "type": "integer"
+                },
+                "targetPort": {
+                    "$id": "#/properties/service/properties/targetPort",
+                    "type": "integer"
+                }
+            },
+            "additionalProperties": false
+        },
+        "ingress": {
+            "$id": "#/properties/ingress",
+            "type": "object",
+            "required": [
+                "enabled",
+                "paths",
+                "tls",
+                "secretName",
+                "acmeRegistrationEmail",
+                "issuerName"
+            ],
+            "properties": {
+                "enabled": {
+                    "$id": "#/properties/ingress/properties/enabled",
+                    "type": "boolean"
+                },
+                "paths": {
+                    "$id": "#/properties/ingress/properties/paths",
+                    "type": "array",
+                    "items": {
+                        "$id": "#/properties/ingress/properties/paths/items",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "minItems": 1
+                },
+                "tls": {
+                    "$id": "#/properties/ingress/properties/tls",
+                    "type": "boolean"
+                },
+                "secretName": {
+                    "$id": "#/properties/ingress/properties/secretName",
+                    "type": "string",
+                    "minLength": 3
+                },
+                "acmeRegistrationEmail": {
+                    "$id": "#/properties/ingress/properties/acmeRegistrationEmail",
+                    "type": "string",
+                    "minLength": 3
+                },
+                "issuerName": {
+                    "$id": "#/properties/ingress/properties/issuerName",
+                    "type": "string",
+                    "minLength": 3
+                }
+            },
+            "additionalProperties": false
+        },
+        "resources": {
+            "$id": "#/properties/resources",
+            "type": "object"
+        },
+        "nodeSelector": {
+            "$id": "#/properties/nodeSelector",
+            "type": "object",
+            "required": []
+        },
+        "tolerations": {
+            "$id": "#/properties/tolerations",
+            "type": "array"
+        },
+        "affinity": {
+            "$id": "#/properties/affinity",
+            "type": "object"
+        },
+        "env": {
+            "$id": "#/properties/env",
+            "type": "object",
+            "required": [
+                "contactPhone",
+                "salesPhone"
+            ],
+            "properties": {
+                "contactPhone": {
+                    "$id": "#/properties/env/properties/contactPhone",
+                    "type": "string",
+                    "minLength": 3
+                },
+                "salesPhone": {
+                    "$id": "#/properties/env/properties/salesPhone",
+                    "type": "string",
+                    "minLength": 3
+                }
+            },
+            "additionalProperties": false
+        },
+        "mysql": {
+            "$id": "#/properties/mysql",
+            "type": "object",
+            "required": [
+                "slave",
+                "root",
+                "db",
+                "replication",
+                "existingSecret"
+            ],
+            "properties": {
+                "slave": {
+                    "$id": "#/properties/mysql/properties/slave",
+                    "type": "object",
+                    "required": [
+                        "replicas"
+                    ],
+                    "properties": {
+                        "replicas": {
+                            "$id": "#/properties/mysql/properties/slave/properties/replicas",
+                            "type": "integer"
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "root": {
+                    "$id": "#/properties/mysql/properties/root",
+                    "type": "object",
+                    "required": [
+                        "forcePassword"
+                    ],
+                    "properties": {
+                        "forcePassword": {
+                            "$id": "#/properties/mysql/properties/root/properties/forcePassword",
+                            "type": "boolean"
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "db": {
+                    "$id": "#/properties/mysql/properties/db",
+                    "type": "object",
+                    "required": [
+                        "user",
+                        "forcePassword",
+                        "name"
+                    ],
+                    "properties": {
+                        "user": {
+                            "$id": "#/properties/mysql/properties/db/properties/user",
+                            "type": "string",
+                            "minLength": 3
+                        },
+                        "forcePassword": {
+                            "$id": "#/properties/mysql/properties/db/properties/forcePassword",
+                            "type": "boolean"
+                        },
+                        "name": {
+                            "$id": "#/properties/mysql/properties/db/properties/name",
+                            "type": "string",
+                            "minLength": 3
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "replication": {
+                    "$id": "#/properties/mysql/properties/replication",
+                    "type": "object",
+                    "required": [
+                        "forcePassword"
+                    ],
+                    "properties": {
+                        "forcePassword": {
+                            "$id": "#/properties/mysql/properties/replication/properties/forcePassword",
+                            "type": "boolean"
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "existingSecret": {
+                    "$id": "#/properties/mysql/properties/existingSecret",
+                    "type": "string",
+                    "minLength": 3
+                }
+            },
+            "additionalProperties": false
+        },
+        "redis": {
+            "$id": "#/properties/redis",
+            "type": "object",
+            "required": [
+                "cluster",
+                "existingSecret",
+                "existingSecretPasswordKey"
+            ],
+            "properties": {
+                "cluster": {
+                    "$id": "#/properties/redis/properties/cluster",
+                    "type": "object",
+                    "required": [
+                        "slaveCount"
+                    ],
+                    "properties": {
+                        "slaveCount": {
+                            "$id": "#/properties/redis/properties/cluster/properties/slaveCount",
+                            "type": "integer"
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "existingSecret": {
+                    "$id": "#/properties/redis/properties/existingSecret",
+                    "type": "string",
+                    "minLength": 3
+                },
+                "existingSecretPasswordKey": {
+                    "$id": "#/properties/redis/properties/existingSecretPasswordKey",
+                    "type": "string",
+                    "minLength": 3
+                }
+            },
+            "additionalProperties": false
+        }
+    },
+    "additionalProperties": false
+}

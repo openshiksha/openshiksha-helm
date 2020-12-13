@@ -12,9 +12,7 @@ metadata:
   labels:
     {{- include "openshiksha.labels" . | nindent 4 }}
   annotations:
-  {{- with .Values.ingress.annotations }}
-    {{- toYaml . | nindent 4 }}
-  {{- end }}
+    kubernetes.io/ingress.class: nginx
   {{ if .Values.ingress.tls }}
     cert-manager.io/issuer: {{ .Values.ingress.issuerName }}
   {{- end }}
