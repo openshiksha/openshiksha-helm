@@ -1,6 +1,6 @@
 This repository contains the helm chart definition for the openshiksha application
 
-![](https://github.com/openshiksha/openshiksha/workflows/CI/CD%20Pipeline/badge.svg)
+![](https://github.com/openshiksha/openshiksha-helm/workflows/CI/CD%20Pipeline/badge.svg)
 
 ## Setup
 
