@@ -350,10 +350,6 @@
                     "minLength": 3
                 }
             }
-        },
-        "nginx-ingress-controller": {
-            "$id": "#/properties/nginx-ingress-controller",
-            "type": "object"
         }
     },
     "additionalProperties": false
