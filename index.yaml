@@ -58,6 +58,24 @@ entries:
   kubernetes-dashboard:
   - apiVersion: v2
     appVersion: 0.1.0
+    created: "2020-12-14T05:26:29.98145763Z"
+    dependencies:
+    - name: kubernetes-dashboard
+      repository: https://kubernetes.github.io/dashboard
+      version: ~2.3.0
+    description: A Helm chart for Kubernetes Dashboard
+    digest: ecb7ac5a3f777e7b5b8d8b225bb78915c74d141418e51848562b7013fe8a41dd
+    maintainers:
+    - email: contact@openshiksha.org
+      name: OpenShiksha
+      url: https://openshiksha.org
+    name: kubernetes-dashboard
+    type: application
+    urls:
+    - https://github.com/openshiksha/openshiksha-helm/releases/download/kubernetes-dashboard-1.0.2/kubernetes-dashboard-1.0.2.tgz
+    version: 1.0.2
+  - apiVersion: v2
+    appVersion: 0.1.0
     created: "2020-12-13T11:14:04.219528134Z"
     dependencies:
     - name: kubernetes-dashboard
