@@ -30,4 +30,4 @@ maintainers:
 dependencies:
   - name: kubernetes-dashboard
     repository: https://kubernetes.github.io/dashboard
-    version: ~2.3.0
+    version: ~3.0.2

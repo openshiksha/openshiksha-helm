@@ -8,4 +8,5 @@ kubernetes-dashboard:
     enabled: true
   protocolHttp: true
   serviceAccount:
-    name: admin-user
+    create: false
+    name: k8s-dashboard-user
