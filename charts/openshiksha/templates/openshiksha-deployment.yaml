@@ -25,6 +25,29 @@ spec:
       serviceAccountName: {{ include "openshiksha.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:
+        - name: wait-for-mysql
+          image: alpine
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: MYSQL_HOST
+              value: {{ .Release.Name }}-mysql
+            - name: MYSQL_PORT
+              value: "3306"
+            - name: MYSQL_USER
+              value: openshiksha_app
+            - name: MYSQL_DATABASE
+              value: openshiksha
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-credentials
+                  key: mysql-password
+          command:
+            - /bin/sh
+            - "-c"
+          args:
+            - "apk add mysql-client && until /usr/bin/mysql -h $MYSQL_HOST -P $MYSQL_PORT -u $MYSQL_USER -D $MYSQL_DATABASE -p$MYSQL_PASSWORD -e \"show tables\"; do echo \"waiting for mysql...\"; sleep 10; done"
       containers:
         - name: {{ include "openshiksha.name" . }}
           securityContext:
@@ -70,11 +93,11 @@ spec:
             - name: OPENSHIKSHA_DB_PORT
               value: "3306"
             - name: OPENSHIKSHA_CABINET_HOST
-              value: {{ .Release.Name }}-openshiksha-cabinet
+              value: {{ include "openshiksha.fullname" . }}
             - name: OPENSHIKSHA_ENV
               value: {{ .Values.tag | upper | quote }}
             - name: OPENSHIKSHA_CABINET_PORT
-              value: "80"
+              value: {{ .Values.service.port | quote }}
             - name: OPENSHIKSHA_SALES_PHONE
               value: {{ .Values.env.salesPhone | quote }}
             - name: OPENSHIKSHA_CONTACT_PHONE

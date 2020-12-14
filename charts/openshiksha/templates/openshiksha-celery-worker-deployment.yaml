@@ -25,6 +25,20 @@ spec:
       serviceAccountName: {{ include "openshiksha.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:
+        - name: wait-for-openshiksha
+          image: alpine
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: OPENSHIKSHA_HOST
+              value: {{ include "openshiksha.fullname" . }}
+            - name: OPENSHIKSHA_PORT
+              value: {{ .Values.service.port | quote }}
+          command:
+            - /bin/sh
+            - "-c"
+          args:
+            - "until /usr/bin/wget http://$OPENSHIKSHA_HOST:$OPENSHIKSHA_PORT; do echo \"waiting for openshiksha...\"; sleep 10; done"
       containers:
         - name: {{ include "openshiksha-celery-worker.name" . }}
           securityContext:
@@ -77,11 +91,11 @@ spec:
             - name: OPENSHIKSHA_DB_PORT
               value: "3306"
             - name: OPENSHIKSHA_CABINET_HOST
-              value: {{ .Release.Name }}-openshiksha-cabinet
+              value: {{ include "openshiksha.fullname" . }}
             - name: OPENSHIKSHA_ENV
               value: {{ .Values.tag | upper | quote }}
             - name: OPENSHIKSHA_CABINET_PORT
-              value: "80"
+              value: {{ .Values.service.port | quote }}
             - name: OPENSHIKSHA_SALES_PHONE
               value: {{ .Values.env.salesPhone | quote }}
             - name: OPENSHIKSHA_CONTACT_PHONE
