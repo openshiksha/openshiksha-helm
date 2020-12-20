@@ -193,6 +193,10 @@
                     "$id": "#/properties/ingress/properties/issuerName",
                     "type": "string",
                     "minLength": 3
+                },
+                "enableLegacyHost": {
+                    "$id": "#/properties/ingress/properties/enableLegacyHost",
+                    "type": "boolean"
                 }
             },
             "additionalProperties": false

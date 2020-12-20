@@ -17,6 +17,9 @@ spec:
   tls:
     - hosts:
         - {{ .Values.host | quote }}
+        {{- if .Values.ingress.enableLegacyHost }}
+        - {{ printf "www.%s" .Values.host | quote }}
+        {{- end }}
       secretName: {{ .Values.ingress.secretName }}
   {{- end }}
   rules:
@@ -32,4 +35,18 @@ spec:
                 port:
                   number: {{ $svcPort }}
           {{- end }}
+    {{- if .Values.ingress.enableLegacyHost }}
+    - host: {{ printf "www.%s" .Values.host | quote }}
+      http:
+        paths:
+          {{- range .Values.ingress.paths }}
+          - path: {{ . }}
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ $fullName }}
+                port:
+                  number: {{ $svcPort }}
+          {{- end }}
+    {{- end }}
 {{- end }}

@@ -51,6 +51,8 @@ ingress:
   acmeRegistrationEmail: socialsevainfra@gmail.com
   issuerName: "letsencrypt-prod"
 
+  # To enable www. subdomain
+  # enableLegacyHost: true
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
