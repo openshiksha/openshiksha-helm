@@ -58,6 +58,24 @@ entries:
   kubernetes-dashboard:
   - apiVersion: v2
     appVersion: 0.1.0
+    created: "2020-12-20T16:47:47.154578126Z"
+    dependencies:
+    - name: kubernetes-dashboard
+      repository: https://kubernetes.github.io/dashboard
+      version: ~3.0.2
+    description: A Helm chart for Kubernetes Dashboard
+    digest: 8bac8adafbde28d6391d94593766446a55b24c933a805278412a68f9b80dff5f
+    maintainers:
+    - email: contact@openshiksha.org
+      name: OpenShiksha
+      url: https://openshiksha.org
+    name: kubernetes-dashboard
+    type: application
+    urls:
+    - https://github.com/openshiksha/openshiksha-helm/releases/download/kubernetes-dashboard-1.1.0/kubernetes-dashboard-1.1.0.tgz
+    version: 1.1.0
+  - apiVersion: v2
+    appVersion: 0.1.0
     created: "2020-12-14T06:06:56.5996527Z"
     dependencies:
     - name: kubernetes-dashboard
@@ -147,6 +165,27 @@ entries:
     - https://github.com/openshiksha/openshiksha-helm/releases/download/kubernetes-dashboard-0.1.0/kubernetes-dashboard-0.1.0.tgz
     version: 0.1.0
   openshiksha:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2020-12-20T16:47:47.267189137Z"
+    dependencies:
+    - name: mysql
+      repository: https://charts.bitnami.com/bitnami
+      version: ~6.14.4
+    - name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: ~10.7.16
+    description: A Helm chart for the OpenShiksha Application
+    digest: c5dd2f655365f098e06239aed09af5af02a1dd3b786a4cd9fe78c2f92f750dc5
+    maintainers:
+    - email: contact@openshiksha.org
+      name: OpenShiksha
+      url: https://openshiksha.org
+    name: openshiksha
+    type: application
+    urls:
+    - https://github.com/openshiksha/openshiksha-helm/releases/download/openshiksha-1.1.1/openshiksha-1.1.1.tgz
+    version: 1.1.1
   - apiVersion: v2
     appVersion: 0.1.0
     created: "2020-12-14T03:58:05.717659996Z"
