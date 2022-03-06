@@ -6,9 +6,9 @@ replicaCount: 1
 celeryWorkerCount: 1
 
 image:
-  repository: docker.pkg.github.com/openshiksha/openshiksha/openshiksha
+  repository: ghcr.io/openshiksha/openshiksha/openshiksha
   pullPolicy: Always
-  cabinetRepository: docker.pkg.github.com/openshiksha/openshiksha-cabinet/openshiksha-cabinet
+  cabinetRepository: ghcr.io/openshiksha/openshiksha-cabinet/openshiksha-cabinet
 
 imagePullSecrets:
   - name: regcred
