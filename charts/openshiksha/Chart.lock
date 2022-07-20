@@ -1,9 +1,9 @@
 dependencies:
 - name: mysql
-  repository: https://charts.bitnami.com/bitnami
+  repository: https://raw.githubusercontent.com/bitnami/charts/archive-full-index/bitnami
   version: 6.14.12
 - name: redis
-  repository: https://charts.bitnami.com/bitnami
+  repository: https://raw.githubusercontent.com/bitnami/charts/archive-full-index/bitnami
   version: 10.7.17
-digest: sha256:ca008f2bc6f9ca43e79a7d129e62186df4b64b71c0beb539c44466c9c1c03149
-generated: "2020-12-13T06:28:54.049906179-05:00"
+digest: sha256:be4dad3d1ccf5d051a7f8d68f821622efc421d2f53e52d92a3388174ea887035
+generated: "2022-07-20T04:45:26.91441417-04:00"

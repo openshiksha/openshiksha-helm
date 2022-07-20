@@ -29,7 +29,7 @@ jobs:
         run: |
           helm repo add jetstack https://charts.jetstack.io && \
           helm repo add dash https://kubernetes.github.io/dashboard && \
-          helm repo add bitnami https://charts.bitnami.com/bitnami
+          helm repo add bitnami https://raw.githubusercontent.com/bitnami/charts/archive-full-index/bitnami
     
       - name: Set up chart-testing
         uses: helm/chart-testing-action@v2.0.1
@@ -61,7 +61,7 @@ jobs:
         run: |
           helm repo add jetstack https://charts.jetstack.io && \
           helm repo add dash https://kubernetes.github.io/dashboard && \
-          helm repo add bitnami https://charts.bitnami.com/bitnami
+          helm repo add bitnami https://raw.githubusercontent.com/bitnami/charts/archive-full-index/bitnami
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.1.0
