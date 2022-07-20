@@ -18,3 +18,9 @@ helm test <release-name>
 cd charts/<chart-name>
 helm dependency update
 ```
+
+## Adding Repo
+
+```
+helm repo add openshiksha https://openshiksha.github.io/openshiksha-helm
+```
