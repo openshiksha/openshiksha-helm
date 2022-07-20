@@ -23,6 +23,18 @@
         "tag"
     ],
     "properties": {
+        "test": {
+            "$id": "#/properties/test",
+            "type": "boolean"
+        },
+        "cabinet": {
+            "$id": "#/properties/cabinet",
+            "type": "boolean"
+        },
+        "celery": {
+            "$id": "#/properties/celery",
+            "type": "boolean"
+        },
         "replicaCount": {
             "$id": "#/properties/replicaCount",
             "type": "integer"
@@ -330,6 +342,10 @@
                 "existingSecretPasswordKey"
             ],
             "properties": {
+                "enabled": {
+                    "$id": "#/properties/redis/properties/enabled",
+                    "type": "boolean"
+                },
                 "cluster": {
                     "$id": "#/properties/redis/properties/cluster",
                     "type": "object",
