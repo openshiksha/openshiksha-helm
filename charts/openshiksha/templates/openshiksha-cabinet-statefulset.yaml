@@ -66,6 +66,9 @@ spec:
         name: submissions
       spec:
         accessModes: [ "ReadWriteOnce" ]
+        {{- if .Values.cabinetStorageClass }}
+        storageClassName: {{ .Values.cabinetStorageClass | quote }}
+        {{- end }}
         resources:
           requests:
             storage: 1Gi

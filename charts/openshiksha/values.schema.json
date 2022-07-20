@@ -27,6 +27,10 @@
             "$id": "#/properties/test",
             "type": "boolean"
         },
+        "cabinetStorageClass": {
+            "$id": "#/properties/cabinetStorageClass",
+            "type": "string"
+        },
         "replicaCount": {
             "$id": "#/properties/replicaCount",
             "type": "integer"
