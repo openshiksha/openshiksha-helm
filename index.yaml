@@ -167,6 +167,28 @@ entries:
   openshiksha:
   - apiVersion: v2
     appVersion: 0.1.0
+    created: "2022-07-20T08:47:45.178175122Z"
+    dependencies:
+    - name: mysql
+      repository: https://raw.githubusercontent.com/bitnami/charts/archive-full-index/bitnami
+      version: ~6.14.4
+    - condition: redis.enabled
+      name: redis
+      repository: https://raw.githubusercontent.com/bitnami/charts/archive-full-index/bitnami
+      version: ~10.7.16
+    description: A Helm chart for the OpenShiksha Application
+    digest: 70198f763337eb23a78b721adffcab5077d663ecd914bcb8b99b9a34b0945a6c
+    maintainers:
+    - email: contact@openshiksha.org
+      name: OpenShiksha
+      url: https://openshiksha.org
+    name: openshiksha
+    type: application
+    urls:
+    - https://github.com/openshiksha/openshiksha-helm/releases/download/openshiksha-1.2.0/openshiksha-1.2.0.tgz
+    version: 1.2.0
+  - apiVersion: v2
+    appVersion: 0.1.0
     created: "2022-03-06T17:38:40.552514906Z"
     dependencies:
     - name: mysql
