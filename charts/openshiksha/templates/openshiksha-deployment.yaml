@@ -79,11 +79,13 @@ spec:
                 secretKeyRef:
                   name: mysql-credentials
                   key: mysql-password
+            {{- if .Values.redis.enabled -}}
             - name: OPENSHIKSHA_REDIS_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: redis-credentials
                   key: redis-password
+            {{- end }}
             - name: OPENSHIKSHA_REDIS_HOST
               value: {{ .Release.Name }}-redis-master
             - name: OPENSHIKSHA_REDIS_PORT
